@@ -604,7 +604,7 @@ def test_zeroshot_3d_core(test_loader, validate_dataset_name, model, clip_model,
         logging.info(','.join([str(value) for value in top3_accuracy_per_class.values()]))        
         logging.info(','.join([str(value) for value in top5_accuracy_per_class.values()]))
     progress.synchronize()
-    logging.info('0-shot * Acc@1 {top1.avg:.3f} Acc@3 {top3.avg:.3f} Acc@5 {top5.avg:.3f}')
+    logging.info(f'0-shot * Acc@1 {top1.avg:.3f} Acc@3 {top3.avg:.3f} Acc@5 {top5.avg:.3f}')
     return {'acc1': top1.avg, 'acc3': top3.avg, 'acc5': top5.avg}
 
 def test_zeroshot_3d(args, model, clip_model):
@@ -638,7 +638,7 @@ def test_zeroshot_3d(args, model, clip_model):
     results_mnet = None
     results_lvis = test_zeroshot_3d_core(test_lvis_loader, args.validate_dataset_name_lvis, model, clip_model, tokenizer, args, 'lvis')
     # results_scanobjnn = test_zeroshot_3d_core(test_loader_scanonjnn, args.validate_dataset_name_scanobjnn, model, clip_model, tokenizer, args, 'scanobjnn')
-    zero_results_scanobjnn = None
+    results_scanobjnn = None
     return results_mnet, results_lvis, results_scanobjnn
 
 
