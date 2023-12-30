@@ -264,7 +264,10 @@ def remove_hidden(pc_batch, camera):
         diameter = np.linalg.norm(np.asarray(pcd.get_max_bound()) - np.asarray(pcd.get_min_bound()))
         new_camera = [c*diameter for c in camera]
         radius = diameter * 100
-        _, pt_map = pcd.hidden_point_removal(camera, radius)
-        pcd_removed = np.asarray(pcd.select_by_index(pt_map).points)
+        try:
+            _, pt_map = pcd.hidden_point_removal(camera, radius)
+            pcd_removed = np.asarray(pcd.select_by_index(pt_map).points)
+        except:
+            pcd_removed = np.asarray(pcd.points)
         new_pc[pci, :pcd_removed.shape[0]] = pcd_removed
-    return torch.tensor(new_pc)
+    return torch.tensor(new_pc, dtype=torch.float32)
