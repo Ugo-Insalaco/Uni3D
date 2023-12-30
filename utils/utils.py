@@ -265,7 +265,7 @@ def remove_hidden(pc_batch, camera):
         new_camera = [c*diameter for c in camera]
         radius = diameter * 100
         try:
-            _, pt_map = pcd.hidden_point_removal(camera, radius)
+            _, pt_map = pcd.hidden_point_removal(new_camera, radius)
             pcd_removed = np.asarray(pcd.select_by_index(pt_map).points)
         except:
             pcd_removed = np.asarray(pcd.points)
