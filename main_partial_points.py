@@ -585,10 +585,10 @@ def test_zeroshot_3d_core(test_loader, validate_dataset_name, model, clip_model,
             if i % args.print_freq == 0:
                 progress.display(i)
 
-        np.save('results/zero shot classif/results_top_1', per_class_correct_top1)
-        np.save('results/zero shot classif/results_top_3', per_class_correct_top3)
-        np.save('results/zero shot classif/results_top_5', per_class_correct_top5)
-        np.save('results/zero shot classif/per_class_stats', per_class_stats)
+        np.save('results/partial points/results_top_1', per_class_correct_top1)
+        np.save('results/partial points/results_top_3', per_class_correct_top3)
+        np.save('results/partial points/results_top_5', per_class_correct_top5)
+        np.save('results/partial points/per_class_stats', per_class_stats)
         
         top1_accuracy_per_class = {}
         top3_accuracy_per_class = {}
